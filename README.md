@@ -62,7 +62,6 @@ Run Tests:
 ```
 
 
-
 ### Set LocationIQ API credentials
 
 Edit Rails credentials:
@@ -88,7 +87,6 @@ Example:
 * OpenWeather API key: 70a6c8131f03fe7a745b6b713ed9ebfd
 
 
-
 ### Set OpenWeather API credentials
 
 Edit Rails credentials:
@@ -104,16 +102,14 @@ openweather_api_key: 70a6c8131f03fe7a745b6b713ed9ebfd
 ```
 
 
-
 ### Enable the cache
 
-Enable the Rails development cache, so a developer can see that the forecasts are cached as expected.
+Enable the Rails development cache, so the user can see that the forecasts are cached as expected.
 
 
 ```sh
 bin/rails dev:cache
 ```
-
 
 ## Using the app:
 
