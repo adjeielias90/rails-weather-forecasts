@@ -1,0 +1,40 @@
+<h1 class="text-2xl font-bold mb-4">Quick Weather Forecast</h1>
+
+<%= form_with(method: 'get', local: true, class: "mb-6") do %>
+  <div class="mb-4">
+    <%= label_tag :address, "What is your address?", class: "block text-gray-700 font-medium mb-2" %>
+    <%= text_field_tag(:address, @address || @address_default, size: 70, class: "w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400") %>
+  </div>
+  <%= submit_tag("Lookup", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600") %>
+<% end %>
+
+<% if defined?(@weather) %>
+  <div class="max-w-sm rounded-2xl shadow-lg bg-white p-6 text-center mx-auto">
+
+    <h2 class="text-xl font-semibold">
+      <h3>Forecast Location:<h3>
+      <%= @address.present? ? @address : "Address not provided" %>
+    </h2>
+    <% if @weather.city && @weather.state %>
+      <p class="text-gray-500 mb-4"><%= @weather.city %>, <%= @weather.state %></p>
+    <% end %>
+
+
+    <div class="flex justify-center items-center mb-2">
+      <span class="text-4xl font-bold"><%= @weather.temperature %>°C</span>
+    </div>
+
+    <p class="text-gray-600 capitalize mb-4"><%= @weather.description %></p>
+
+    <div class="text-left text-sm text-gray-700">
+      <p>Temp Min: <%= @weather.temperature_min %>°C</p>
+      <p>Temp Max: <%= @weather.temperature_max %>°C</p>
+      <p>Humidity: <%= @weather.humidity %>%</p>
+      <p>Pressure: <%= @weather.pressure %> millibars</p>
+    </div>
+
+    <p class="text-xs text-black-400 mt-4">
+      Is this result from the cache? <%= @weather_cache_exist %>
+    </p>
+  </div>
+<% end %>
